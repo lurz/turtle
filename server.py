@@ -14,7 +14,7 @@ class GoForward():
         r = rospy.Rate(10)
         move_cmd = Twist()
         move_cmd.linear.x = 0.2
-    	move_cmd.angular.z = 0
+        move_cmd.angular.z = 0
         while not rospy.is_shutdown():
             self.cmd_vel.publish(move_cmd)
             r.sleep()
