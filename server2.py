@@ -31,6 +31,6 @@ def message_received(client, server, message):
         GoForward()
     server.send_message_to_all("succeed!")
 
-server = WebsocketServer(8080, host='127.0.0.1')
+server = WebsocketServer(8080, host='192.168.86.51')
 server.set_fn_new_client(new_client)
 server.run_forever()
