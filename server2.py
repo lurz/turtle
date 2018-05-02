@@ -2,6 +2,7 @@ import logging
 from websocket_server import WebsocketServer
 import rospy
 from geometry_msgs.msg import Twist
+import goforward
 
 class GoForward():
     def __init__(self):
@@ -28,9 +29,12 @@ def new_client(client, server):
 def message_received(client, server, message):
     print(message)
     if message == "forward":
-        GoForward()
+        try:
+            goforward
+        except:
+            rospy.loginfo("GoForward node terminated.")
     server.send_message_to_all("succeed!")
 
-server = WebsocketServer(8080, host='127.0.0.1')
+server = WebsocketServer(8080, host='192.168.86.51')
 server.set_fn_new_client(new_client)
 server.run_forever()
