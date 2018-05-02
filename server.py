@@ -27,7 +27,7 @@ def dob():
     print("b")
     return True
 
-start_server = websockets.serve(start, 'localhost', 8080)
+start_server = websockets.serve(start, '192.168.86.51', 8080)
 
 asyncio.get_event_loop().run_until_complete(start_server)
 asyncio.get_event_loop().run_forever()
