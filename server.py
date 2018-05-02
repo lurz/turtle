@@ -4,7 +4,7 @@ import asyncio
 import websockets
 
 @asyncio.coroutine
-def hello(websocket, path):
+def start(websocket, path):
     print ("Server Setup!")
     name = yield from websocket.recv()
     status = False
@@ -27,7 +27,7 @@ def dob():
     print("b")
     return True
 
-start_server = websockets.serve(hello, 'localhost', 8080)
+start_server = websockets.serve(start, 'localhost', 8080)
 
 asyncio.get_event_loop().run_until_complete(start_server)
 asyncio.get_event_loop().run_forever()
