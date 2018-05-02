@@ -31,9 +31,9 @@ def message_received(client, server, message):
     if message == "forward":
         try:
             goforward
+	    server.send_message_to_all("succeed!")
         except:
             rospy.loginfo("GoForward node terminated.")
-    server.send_message_to_all("succeed!")
 
 server = WebsocketServer(8080, host='192.168.86.51')
 server.set_fn_new_client(new_client)
