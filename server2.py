@@ -32,6 +32,8 @@ def message_received(client, server, message):
             server.send_message_to_all("succeed!")
         except:
             server.send_message_to_all("failed!")
+    else:
+        server.send_message_to_all("wrong command!")
 
 server = WebsocketServer(8080, host='192.168.86.51')
 server.set_fn_new_client(new_client)
