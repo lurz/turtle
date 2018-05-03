@@ -37,7 +37,7 @@ deactivate () {
 # unset irrelavent variables
 deactivate nondestructive
 
-VIRTUAL_ENV="/mnt/d/d/大学/实习/websocket/env"
+VIRTUAL_ENV="/home/rokid/Desktop/turtle/env"
 export VIRTUAL_ENV
 
 _OLD_VIRTUAL_PATH="$PATH"
