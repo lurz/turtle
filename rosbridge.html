@@ -11,7 +11,7 @@
   // -----------------
 
   var ros = new ROSLIB.Ros({
-    url : 'ws://localhost:9090'
+    url : 'ws://192.168.86.51:9090'
   });
 
   ros.on('connection', function() {
@@ -31,20 +31,20 @@
 
   var cmdVel = new ROSLIB.Topic({
     ros : ros,
-    name : '/cmd_vel',
+    name : '/cmd_vel_mux/input/navi',
     messageType : 'geometry_msgs/Twist'
   });
 
   var twist = new ROSLIB.Message({
     linear : {
-      x : 0.1,
-      y : 0.2,
-      z : 0.3
+      x : 0.2,
+      y : 0.0,
+      z : 0.0
     },
     angular : {
-      x : -0.1,
-      y : -0.2,
-      z : -0.3
+      x : -0.0,
+      y : -0.0,
+      z : -1
     }
   });
   cmdVel.publish(twist);
@@ -104,7 +104,12 @@
 </head>
 
 <body>
-  <h1>Simple roslib Example</h1>
-  <p>Check your Web Console for output.</p>
+  <h1>TURTLEBOT CONTROL PANEL</h1>
+  <form>
+    <input type="submit" value="FORWARD" onclick="goforward">
+    <input type="submit" value="BACKWARD" onclick="goback">
+    <input type="submit" value="CLOCKWISE" onclick="goclock">
+    <input type="submit" value="COUNTERCLOCK" onclick="gocounterclock">
+  </form>
 </body>
 </html>

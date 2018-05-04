@@ -49,10 +49,10 @@ def main():
         if send_command == "subs":
             sendmsg(websocket_c, "subscribe", "/hello", "", "")
         if send_command == "w":
-            lo = {"linear": {"x": 0.2}, "angular": {"z": 0}}
+            lo = {"linear": {"x": 0.1}, "angular": {"z": 0}}
             sendmsg(websocket_c, "publish", "/cmd_vel_mux/input/navi", "geometry_msgs/Twist", lo)
         if send_command == "s":
-            lo = {"linear": {"x": -0.2}, "angular": {"z": 0}}
+            lo = {"linear": {"x": -0.1 }, "angular": {"z": 0}}
             sendmsg(websocket_c, "publish", "/cmd_vel_mux/input/navi", "geometry_msgs/Twist", lo)
         if send_command == "a":
             lo = {"linear": {"x": 0}, "angular": {"z": 1}}
@@ -63,6 +63,9 @@ def main():
         if send_command == "k":
             lo = {"linear": {"x": 0}, "angular": {"z": 0}}
             sendmsg(websocket_c, "publish", "/cmd_vel_mux/input/navi", "geometry_msgs/Twist", lo)
+        if send_command == "navi":
+            lo = {"goal": {"target_pose": {"header": {"frame_id": "map"}, "pose": {"position": {"x": 1.65, "y": -0.57, "z": 0.0}, "orientation": {"w": 1.0}}}}}
+            sendmsg(websocket_c, "publish", "/move_base/goal","geometry_msgs/Quaternion", lo)
         print ("Command done with no msg back")
 
 if __name__ == '__main__':
