@@ -30,15 +30,15 @@ class GoToPose():
 
         self.goal_sent = False
 
-	# What to do if shut down (e.g. Ctrl-C or failure)
-    rospy.on_shutdown(self.shutdown)
-	
-	# Tell the action client that we want to spin a thread by default
-    self.move_base = actionlib.SimpleActionClient("move_base", MoveBaseAction)
-    rospy.loginfo("Wait for the action server to come up")
+        # What to do if shut down (e.g. Ctrl-C or failure)
+        rospy.on_shutdown(self.shutdown)
+        
+        # Tell the action client that we want to spin a thread by default
+        self.move_base = actionlib.SimpleActionClient("move_base", MoveBaseAction)
+        rospy.loginfo("Wait for the action server to come up")
 
-	# Allow up to 5 seconds for the action server to come up
-    self.move_base.wait_for_server(rospy.Duration(5))
+        # Allow up to 5 seconds for the action server to come up
+        self.move_base.wait_for_server(rospy.Duration(5))
 
     def goto(self, pos, quat):
 
@@ -78,7 +78,7 @@ if __name__ == '__main__':
         navigator = GoToPose()
 
         # Customize the following values so they are appropriate for your location
-        position = {'x': 1.22, 'y' : 2.56}
+        position = {'x': 0, 'y' : 0}
         quaternion = {'r1' : 0.000, 'r2' : 0.000, 'r3' : 0.000, 'r4' : 1.000}
 
         rospy.loginfo("Go to (%s, %s) pose", position['x'], position['y'])
